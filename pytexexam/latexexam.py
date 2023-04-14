@@ -152,9 +152,10 @@ class LatexExam:
 
         :param file_name: The file name will output.
         """
-        question_list_string = ""
-        for question in self.exam_content.question_list:
-            question_list_string += (self.__print_question(question) + "\n")
+        question_list_string = "".join(
+            (self.__print_question(question) + "\n")
+            for question in self.exam_content.question_list
+        )
         latex_string = inspect.cleandoc("""
         {latex_preamble}
         \\begin{{document}}
@@ -238,4 +239,3 @@ class LatexExam:
         """Export a file containing detailed answers for each question in the exam"""
         self.export_tex_solution(file_name)
         os.system("pdflatex {file_name}".format(file_name=file_name))
-        pass

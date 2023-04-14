@@ -130,7 +130,7 @@ class Question:
         :param answer_column: The number of columns the answer will be displayed when printed.
 
         """
-        if answer_column in [1, 2, 4]:
+        if answer_column in {1, 2, 4}:
             self.__answer_column = answer_column
 
     def get_answer_column(self) -> int:
